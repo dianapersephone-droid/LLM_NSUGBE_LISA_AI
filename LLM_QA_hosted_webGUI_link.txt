@@ -1,5 +1,5 @@
 Name: [Nsugbe Lisa Chiamaka]
 Matric Number: 23CH034203
-Live URL: 
-GitHub Repository: https://github.com/dianapersephone-droid/LLM_QA_Project_Lisa_23CH034203.git
+Live URL: https://llm-nsugbe-lisa-ai.onrender.com/
+GitHub Repository: https://github.com/dianapersephone-droid/LLM_NSUGBE_LISA_AI.git
 Date Submitted: 21/11/2025

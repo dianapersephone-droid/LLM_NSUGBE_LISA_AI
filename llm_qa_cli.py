@@ -16,20 +16,21 @@ def preprocess_text(text):
 
 
 def get_llm_response(question):
-    API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.3"
-    headers = {"Authorization": f"Bearer {os.getenv('HF_API_TOKEN')}"}
+        API_KEY = os.getenv("CSC331dRHp7GFZSooKsxVA")
+        API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={API_KEY}"
+        headers = {"Authorization": f"Bearer {os.getenv('HF_API_TOKEN')}"}
 
-    payload = {
+        payload = {
         "inputs": f"<s>[INST] You are a helpful Q&A assistant. Answer concisely. [/INST] {question} </s>",
         "parameters": {"max_new_tokens": 256, "temperature": 0.5}
-    }
+        }
 
-    response = requests.post(API_URL, headers=headers, json=payload)
-    if response.status_code == 200:
-        result = response.json()
-        return result[0]['generated_text'].split('[/INST]')[-1].strip() if result else "No response."
-    else:
-        return f"Error: {response.status_code}"
+        response = requests.post(API_URL, headers=headers, json=payload)
+        if response.status_code == 200:
+            result = response.json()
+            return result[0]['generated_text'].split('[/INST]')[-1].strip() if result else "No response."
+        else:
+            return f"Error: {response.status_code}"
 
 
 def main():

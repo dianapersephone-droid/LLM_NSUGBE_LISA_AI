@@ -10,13 +10,13 @@ load_dotenv()
 st.set_page_config(page_title="LLM Q&A System", page_icon="🤖", layout="centered")
 
 st.title("Question & Answer System")
-st.markdown("### Powered by Hugging Face + Mistral-7B | Made by [Your Name]")
+st.markdown("Made by Nsugbe Lisa")
 
 # Sidebar
 with st.sidebar:
     st.header("Instructions")
     st.write("Enter any question below and get instant answers using open AI models.")
-    st.info("Free tier via Hugging Face Inference API.")
+    st.info("API.")
 
 # Input
 question = st.text_input("Ask anything:", placeholder="e.g., What is the capital of France?")
@@ -25,7 +25,8 @@ if st.button("Get Answer", type="primary"):
     if question.strip():
         with st.spinner("Getting answer..."):
             try:
-                API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.3"
+                API_KEY = os.getenv("CSC331dRHp7GFZSooKsxVA")
+                API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={API_KEY}"
                 headers = {"Authorization": f"Bearer {os.getenv('HF_API_TOKEN')}"}
                 payload = {
                     "inputs": f"<s>[INST] You are a concise and accurate assistant. [/INST] {question} </s>",
